@@ -18,6 +18,9 @@
 		5405EF19171D454500C6E9F5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5405EF18171D454500C6E9F5 /* Default-568h@2x.png */; };
 		5405EF1C171D454500C6E9F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5405EF1B171D454500C6E9F5 /* ViewController.m */; };
 		5405EF1F171D454500C6E9F5 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5405EF1D171D454500C6E9F5 /* ViewController.xib */; };
+		694F4B571B465F3300A85638 /* TestCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F4B561B465F3300A85638 /* TestCollection.m */; };
+		694F4B5A1B4662EC00A85638 /* TestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F4B591B4662EC00A85638 /* TestQueue.m */; };
+		694F4B5D1B46658E00A85638 /* TestStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 694F4B5C1B46658E00A85638 /* TestStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,12 @@
 		5405EF1A171D454500C6E9F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5405EF1B171D454500C6E9F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5405EF1E171D454500C6E9F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		694F4B551B465E8700A85638 /* TestCollection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestCollection.h; sourceTree = "<group>"; };
+		694F4B561B465F3300A85638 /* TestCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCollection.m; sourceTree = "<group>"; };
+		694F4B581B46628000A85638 /* TestQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestQueue.h; sourceTree = "<group>"; };
+		694F4B591B4662EC00A85638 /* TestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestQueue.m; sourceTree = "<group>"; };
+		694F4B5B1B46655700A85638 /* TestStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestStack.h; sourceTree = "<group>"; };
+		694F4B5C1B46658E00A85638 /* TestStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +97,12 @@
 				5405EF1A171D454500C6E9F5 /* ViewController.h */,
 				5405EF1B171D454500C6E9F5 /* ViewController.m */,
 				5405EF1D171D454500C6E9F5 /* ViewController.xib */,
+				694F4B551B465E8700A85638 /* TestCollection.h */,
+				694F4B561B465F3300A85638 /* TestCollection.m */,
+				694F4B581B46628000A85638 /* TestQueue.h */,
+				694F4B591B4662EC00A85638 /* TestQueue.m */,
+				694F4B5B1B46655700A85638 /* TestStack.h */,
+				694F4B5C1B46658E00A85638 /* TestStack.m */,
 				5405EF09171D454500C6E9F5 /* Supporting Files */,
 			);
 			path = BasicObjectiveC;
@@ -174,8 +189,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5405EF0F171D454500C6E9F5 /* main.m in Sources */,
+				694F4B5A1B4662EC00A85638 /* TestQueue.m in Sources */,
+				694F4B5D1B46658E00A85638 /* TestStack.m in Sources */,
 				5405EF13171D454500C6E9F5 /* AppDelegate.m in Sources */,
 				5405EF1C171D454500C6E9F5 /* ViewController.m in Sources */,
+				694F4B571B465F3300A85638 /* TestCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +316,7 @@
 				5405EF24171D454500C6E9F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
