@@ -67,7 +67,7 @@
 	[super viewWillAppear:animated];
     
     // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
-    [self animationPopFrontScaleUp];
+    [self animationPopFront];
 }
 
 - (IBAction)clickPush:(id)sender
@@ -86,7 +86,7 @@
     [self presentViewController:navController animated:YES completion:nil];
 
 // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
-    [self animationPushBackScaleDown];
+    [self animationPushBack];
 }
 
 - (void)clickClose:(id)sender
