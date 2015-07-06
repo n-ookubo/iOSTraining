@@ -48,6 +48,7 @@
     NSLog(@"\n%@", array);
     
     //キューのテスト
+    NSLog(@"\ntest queue");
     TestQueue *queue = [[TestQueue alloc] init];
     [ViewController pushAndLog:queue value:@0];
     [ViewController pushAndLog:queue value:@1];
@@ -59,6 +60,7 @@
     [ViewController popAndLog:queue];
     
     //スタックのテスト
+    NSLog(@"\ntest stack");
     TestStack *stack = [[TestStack alloc] init];
     [ViewController pushAndLog:stack value:@0];
     [ViewController pushAndLog:stack value:@1];
