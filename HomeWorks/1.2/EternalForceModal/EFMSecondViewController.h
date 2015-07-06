@@ -13,6 +13,7 @@
 @protocol EMFSecondViewControllerDelegate <NSObject>
 
 // ここにDelegateメソッドの定義
+- (void)closeModal;
 
 @end
 
