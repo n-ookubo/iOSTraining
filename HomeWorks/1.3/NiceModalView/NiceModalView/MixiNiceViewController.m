@@ -7,6 +7,7 @@
 //
 
 #import "MixiNiceViewController.h"
+#import "UIViewController+NiceAnimation.h"
 
 @interface MixiNiceViewController()
 
@@ -47,6 +48,11 @@
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[sampleImages objectAtIndex:index%allImageCount]];
     // insertSubview と addSubViewの違いを探してみましょう
 	[self.view insertSubview:imageView atIndex:0];
+    
+    // ios7対応
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
 
 // TODO: XIB上にある二つの各ボタンのTouchUpInsideイベントに　clickModalView：　と　clickPush:　を連結しましょう
 }
@@ -59,13 +65,16 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
-// TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
+    
+    // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
+    [self animationPopFrontScaleUp];
 }
 
 - (IBAction)clickPush:(id)sender
 {
 	MixiNiceViewController *viewController = [[MixiNiceViewController alloc] init];
 // TODO :　hint-> pushViewController: animation:
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)clickModalView:(id)sender
@@ -73,14 +82,17 @@
 	MixiNiceViewController *viewController = [[MixiNiceViewController alloc] init];
 
 // TODO :　hint-> presentViewController: animation:
-
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    [self presentViewController:navController animated:YES completion:nil];
 
 // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
+    [self animationPushBackScaleDown];
 }
 
 - (void)clickClose:(id)sender
 {
 // TODO : hint-> dismissViewControllerAnimated:
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
