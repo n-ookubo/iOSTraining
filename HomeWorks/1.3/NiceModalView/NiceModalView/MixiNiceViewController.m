@@ -13,6 +13,28 @@
 @end
 
 @implementation MixiNiceViewController
+static NSMutableDictionary *instanceDictionary;
+
+- (int)getInstanceIdentifier
+{
+    static dispatch_once_t onceDispather;
+    dispatch_once(&onceDispather, ^{
+        instanceDictionary = [[NSMutableDictionary alloc] init];
+    });
+    
+    NSString *instancePointerString = [[NSString alloc] initWithFormat:@"%p", self];
+    NSNumber *identifier = [instanceDictionary objectForKey:instancePointerString];
+    if (identifier != nil) {
+        return identifier.intValue;
+    }
+    
+    static int counter = 0;
+    
+    identifier = [[NSNumber alloc] initWithInt:counter++];
+    [instanceDictionary setObject:identifier forKey:instancePointerString];
+    return identifier.intValue;
+}
+
 - (void)myLog:(NSString *)format,...
 {
     va_list args;
@@ -20,7 +42,7 @@
     NSString *content = [[NSString alloc] initWithFormat:format arguments:args];
     va_end(args);
     
-    NSLog(@"<%p> %@", self, content);
+    NSLog(@"<%d> %@", [self getInstanceIdentifier], content);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -66,7 +88,7 @@
     
     [self myLog:@"viewDidLoad (imageIndex=%d)", index];
     
-
+    self.title = [[NSString alloc] initWithFormat:@"%d", [self getInstanceIdentifier]];
 // TODO: XIB上にある二つの各ボタンのTouchUpInsideイベントに　clickModalView：　と　clickPush:　を連結しましょう
 }
 
@@ -116,12 +138,17 @@
 */
 - (void) dealloc
 {
+    if ([_delegate respondsToSelector:(@selector(callback:))]) {
+        [_delegate callback:self];
+    }
+    
     [self myLog:@"dealloc"];
 }
 
 - (IBAction)clickPush:(id)sender
 {
 	MixiNiceViewController *viewController = [[MixiNiceViewController alloc] init];
+    viewController.delegate = self;
 // TODO :　hint-> pushViewController: animation:
     [self.navigationController pushViewController:viewController animated:YES];
 }
@@ -129,6 +156,7 @@
 - (IBAction)clickModalView:(id)sender
 {
 	MixiNiceViewController *viewController = [[MixiNiceViewController alloc] init];
+    viewController.delegate = self;
 
 // TODO :　hint-> presentViewController: animation:
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -145,5 +173,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void) callback:(id<TestDelegate>)sender
+{
+    NSLog(@"delegate <%d> from <%d>", [self getInstanceIdentifier], [sender getInstanceIdentifier]);
+}
 
 @end

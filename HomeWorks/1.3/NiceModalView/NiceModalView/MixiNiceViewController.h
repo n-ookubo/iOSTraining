@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MixiNiceViewController : UIViewController
+@protocol TestDelegate <NSObject>
+- (void) callback:(id<TestDelegate>)sender;
+- (int) getInstanceIdentifier;
+@end
 
+@interface MixiNiceViewController : UIViewController<TestDelegate>
+@property (weak, nonatomic) id<TestDelegate> delegate;
 @end
