@@ -94,8 +94,6 @@
 {
     [super viewWillDisappear:animated];
     [self myLog:@"viewWillDisappear"];
-    [self animationPushBack];
-
  }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -137,6 +135,8 @@
     [self presentViewController:navController animated:YES completion:nil];
 
     // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
+    [self animationPushBack];
+
 }
 
 - (void)clickClose:(id)sender
