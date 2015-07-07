@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyLogger.h"
 
 @protocol TestDelegate <NSObject>
-- (void) callback:(id<TestDelegate>)sender;
-- (int) getInstanceIdentifier;
+- (void) callback:(id<MyLogger>)sender;
 @end
 
-@interface MixiNiceViewController : UIViewController<TestDelegate>
-@property (weak, nonatomic) id<TestDelegate> delegate;
+@interface MixiNiceViewController : UIViewController<TestDelegate, MyLogger>
+@property (weak, nonatomic) id<TestDelegate, MyLogger> delegate;
 @end

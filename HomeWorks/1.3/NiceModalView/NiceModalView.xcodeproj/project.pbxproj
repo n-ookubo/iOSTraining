@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690BF8FE1B4BC72F001B5C29 /* MyUINavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 690BF8FD1B4BC72F001B5C29 /* MyUINavigationController.m */; };
 		69B557641B4A57E8008DA033 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B557631B4A57E8008DA033 /* QuartzCore.framework */; };
 		DAC572A5171D05E600E434A0 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC572A0171D05E600E434A0 /* 0.jpg */; };
 		DAC572A6171D05E600E434A0 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAC572A1171D05E600E434A0 /* 1.jpg */; };
@@ -32,6 +33,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690BF8FC1B4BC711001B5C29 /* MyUINavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyUINavigationController.h; sourceTree = "<group>"; };
+		690BF8FD1B4BC72F001B5C29 /* MyUINavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyUINavigationController.m; sourceTree = "<group>"; };
+		690BF8FF1B4BC8F4001B5C29 /* MyLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyLogger.h; sourceTree = "<group>"; };
 		69B557631B4A57E8008DA033 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAC572A0171D05E600E434A0 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 		DAC572A1171D05E600E434A0 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -77,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		690BF8FB1B4BC6E6001B5C29 /* LoggingPackage */ = {
+			isa = PBXGroup;
+			children = (
+				690BF8FF1B4BC8F4001B5C29 /* MyLogger.h */,
+				690BF8FC1B4BC711001B5C29 /* MyUINavigationController.h */,
+				690BF8FD1B4BC72F001B5C29 /* MyUINavigationController.m */,
+			);
+			name = LoggingPackage;
+			sourceTree = "<group>";
+		};
 		DAC5729F171D05E500E434A0 /* resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +146,7 @@
 		DAD37295171C3B0F00DF0A95 /* NiceModalView */ = {
 			isa = PBXGroup;
 			children = (
+				690BF8FB1B4BC6E6001B5C29 /* LoggingPackage */,
 				DAC5729F171D05E500E434A0 /* resource */,
 				DAD3729E171C3B0F00DF0A95 /* MixiAppDelegate.h */,
 				DAD3729F171C3B0F00DF0A95 /* MixiAppDelegate.m */,
@@ -247,6 +262,7 @@
 				DAD372A0171C3B0F00DF0A95 /* MixiAppDelegate.m in Sources */,
 				DAD372B2171C3B7700DF0A95 /* UIViewController+NiceAnimation.m in Sources */,
 				DAD372B8171C3D7700DF0A95 /* MixiNiceViewController.m in Sources */,
+				690BF8FE1B4BC72F001B5C29 /* MyUINavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

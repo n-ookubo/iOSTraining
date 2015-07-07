@@ -7,6 +7,7 @@
 //
 
 #import "MixiNiceViewController.h"
+#import "MyUINavigationController.h"
 #import "UIViewController+NiceAnimation.h"
 
 @interface MixiNiceViewController()
@@ -95,12 +96,34 @@ static NSMutableDictionary *instanceDictionary;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
+    [self myLog:@"didReceiveMemoryWarning"];
+}
+
+- (NSString *)getAppearingStatusString
+{
+    NSString *cause = @"";
+    
+    if ([self isMovingFromParentViewController]){
+        cause = [cause stringByAppendingString:@" (removed from parent)"];
+    }
+    if ([self isMovingToParentViewController]) {
+        cause = [cause stringByAppendingString:@" (add to parent)"];
+    }
+    if ([self isBeingPresented]) {
+        cause = [cause stringByAppendingString:@" (presented)"];
+    }
+    if ([self isBeingDismissed]) {
+        cause = [cause stringByAppendingString:@" (dismissed)"];
+    }
+    
+    return cause;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self myLog:@"viewWillAppear"];
+    [self myLog:@"viewWillAppear:%@", [self getAppearingStatusString]];
     
     // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
     [self animationPopFront];
@@ -109,19 +132,19 @@ static NSMutableDictionary *instanceDictionary;
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self myLog:@"viewDidAppear"];
+    [self myLog:@"viewDidAppear:%@", [self getAppearingStatusString]];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self myLog:@"viewWillDisappear"];
+    [self myLog:@"viewWillDisappear:%@", [self getAppearingStatusString]];
  }
 
 - (void) viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self myLog:@"viewDidDisappear"];
+    [self myLog:@"viewDidDisappear:%@", [self getAppearingStatusString]];
 }
 /*
 - (void) viewWillLayoutSubviews
@@ -141,8 +164,9 @@ static NSMutableDictionary *instanceDictionary;
     if ([_delegate respondsToSelector:(@selector(callback:))]) {
         [_delegate callback:self];
     }
-    
+ 
     [self myLog:@"dealloc"];
+    [instanceDictionary removeObjectForKey:[[NSString alloc] initWithFormat:@"%p", self]];
 }
 
 - (IBAction)clickPush:(id)sender
@@ -159,7 +183,8 @@ static NSMutableDictionary *instanceDictionary;
     viewController.delegate = self;
 
 // TODO :　hint-> presentViewController: animation:
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    MyUINavigationController *navController = [[MyUINavigationController alloc] initWithRootViewController:viewController];
+    navController.logger = viewController;
     [self presentViewController:navController animated:YES completion:nil];
 
     // TODO : UIViewController+NiceAnimation にある関数を使って、いい感じの遷移になるようにしましょう
@@ -173,7 +198,7 @@ static NSMutableDictionary *instanceDictionary;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) callback:(id<TestDelegate>)sender
+- (void) callback:(id<MyLogger>)sender
 {
     NSLog(@"delegate <%d> from <%d>", [self getInstanceIdentifier], [sender getInstanceIdentifier]);
 }
