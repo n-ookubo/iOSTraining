@@ -44,7 +44,9 @@
 // TODO EFMSecondViewController の delegateメソッドを実装
 - (void)closeModal {
     if (secondViewController) {
+        //ModalViewを閉じる
         [secondViewController dismissViewControllerAnimated:YES completion:^(void) {
+            //フラグが立っていたら強制的に再表示
             if (eternalModal) {
                 [self.view.window.rootViewController presentViewController:secondViewController animated:YES completion:nil];
             }
