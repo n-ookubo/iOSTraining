@@ -30,17 +30,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 
-    self.title = [NSString stringWithFormat:@"%d", self.navigationController.viewControllers.count];
+    self.title = [NSString stringWithFormat:@"%d", (unsigned int)self.navigationController.viewControllers.count];
 
-    // TODO ここに navigation bar の右上をpushするボタンを配置するコードを書く
+    // TODO ここに navigation bar の右上をpushするボタンを配置するコードを書く;
+    UIBarButtonItem *pushButton = [[UIBarButtonItem alloc] initWithTitle:@"push" style:UIBarButtonItemStyleBordered target:self action:@selector(pushViewController)];
+    self.navigationItem.rightBarButtonItem = pushButton;
     // TODO さらに、一番先頭に戻るボタンを左に配置する
-
+    if (self.navigationController.viewControllers.count > 1) {
+        UIBarButtonItem *popButton = [[UIBarButtonItem alloc] initWithTitle:@"root" style:UIBarButtonItemStyleBordered target:self action:@selector(popToRootViewController)];
+        self.navigationItem.leftBarButtonItem = popButton;
+    }
+    self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)pushViewController
+{
+    [self.navigationController pushViewController:[[NIMModalViewController alloc] initWithNibName:@"NIMModalViewController" bundle:nil] animated:YES];
+}
+
+- (void)popToRootViewController
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
