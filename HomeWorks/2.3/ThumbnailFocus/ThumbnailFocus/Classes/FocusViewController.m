@@ -28,26 +28,26 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    // ⬇Answer：
+    // ⬇Answer：通知センターに、デバイスの向きが変化した場合に通知するよう登録
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(orientationDidChangeNotification:)
                                                  name:UIDeviceOrientationDidChangeNotification object:nil];
-    // ⬇Answer：    
+    // ⬇Answer：デバイスの方向変化の監視を開始
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    // ⬇Answer：
+    // ⬇Answer：通知センターから通知の登録を解除
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
-    // ⬇Answer：
+    // ⬇Answer：デバイスの方向変化の監視を終了
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    // ⬇Answer：    
+    // ⬇Answer：ビューの自動回転には対応しないことを宣言
     return UIInterfaceOrientationMaskPortrait;
 }
 
@@ -80,47 +80,47 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
     NSTimeInterval duration = kDefaultOrientationAnimationDuration;
 
     if([UIDevice currentDevice].orientation == self.previousOrientation)
-        return;
+        return;// 向きが変化していない場合はアニメーションしない
 
     if((UIInterfaceOrientationIsLandscape([UIDevice currentDevice].orientation) && UIInterfaceOrientationIsLandscape(self.previousOrientation))
        || (UIInterfaceOrientationIsPortrait([UIDevice currentDevice].orientation) && UIInterfaceOrientationIsPortrait(self.previousOrientation)))
     {
-        duration *= 2;
+        duration *= 2;// 180度回転した場合はアニメーション時間を倍にする
     }
 
     if(([UIDevice currentDevice].orientation == UIInterfaceOrientationPortrait)
        || [self isParentSupportingInterfaceOrientation:(UIInterfaceOrientation)[UIDevice currentDevice].orientation]) {
-        transform = CGAffineTransformIdentity;
+        transform = CGAffineTransformIdentity;// portraitでは回転して表示する必要はない
     }else {
         switch ([UIDevice currentDevice].orientation){
             case UIInterfaceOrientationLandscapeLeft:
                 if(self.parentViewController.interfaceOrientation == UIInterfaceOrientationPortrait) {
-                    transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    transform = CGAffineTransformMakeRotation(-M_PI_2);// -90度回転して表示
                 }else {
-                    transform = CGAffineTransformMakeRotation(M_PI_2);
+                    transform = CGAffineTransformMakeRotation(M_PI_2);// 90度回転して表示
                 }
                 break;
 
             case UIInterfaceOrientationLandscapeRight:
                 if(self.parentViewController.interfaceOrientation == UIInterfaceOrientationPortrait) {
-                    transform = CGAffineTransformMakeRotation(M_PI_2);
+                    transform = CGAffineTransformMakeRotation(M_PI_2);// 90度回転して表示
                 }else {
-                    transform = CGAffineTransformMakeRotation(-M_PI_2);
+                    transform = CGAffineTransformMakeRotation(-M_PI_2);//-90度回転して表示
                 }
                 break;
 
             case UIInterfaceOrientationPortrait:
-                transform = CGAffineTransformIdentity;
+                transform = CGAffineTransformIdentity;// portraitでは回転して表示する必要はない
                 break;
 
             case UIInterfaceOrientationPortraitUpsideDown:
-                transform = CGAffineTransformMakeRotation(M_PI);
+                transform = CGAffineTransformMakeRotation(M_PI);// 180度回転して表示
                 break;
 
             case UIDeviceOrientationFaceDown:
             case UIDeviceOrientationFaceUp:
             case UIDeviceOrientationUnknown:
-                return;
+                return;// 回転軸が画面の平面に対して直交していない場合は、何もせず終了
         }
     }
 
@@ -131,17 +131,17 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
                          animations:^{
                              self.contentView.transform = transform;
                              self.contentView.frame = frame;
-                         }];
+                         }];// 画像の表示範囲および回転状態をアニメーションする
     }else {
         frame = self.contentView.frame;
         self.contentView.transform = transform;
-        self.contentView.frame = frame;
+        self.contentView.frame = frame;// 画像の表示範囲および回転状態をアニメーションせずに変更
     }
     self.previousOrientation = [UIDevice currentDevice].orientation;
 }
 
 #pragma mark - Notifications
-// ⬇Answer：こちはいつ呼ばれますか？
+// ⬇Answer：こちはいつ呼ばれますか？　->　通知センターから通知が来た時
 - (void)orientationDidChangeNotification:(NSNotification *)notification
 {
     [self updateOrientationAnimated:YES];

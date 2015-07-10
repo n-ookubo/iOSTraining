@@ -10,6 +10,7 @@
 
 @interface ThumbnailsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *imageViewCollection;
 @property (strong, nonatomic) FocusManager *focusManager;
 @end
 
@@ -21,6 +22,18 @@
 
     self.focusManager = [[FocusManager alloc] init];
     self.focusManager.delegate = self;
+    
+    // iPadではTableViewを使わないので手動で読み込む
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        for (int i = 0; i < _imageViewCollection.count; i++) {
+            UIImageView *view = [_imageViewCollection objectAtIndex:i];
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", i + 1]];
+            view.image = image;
+            view.tag = i + 1;
+            
+            [self.focusManager installOnView:view];
+        }
+    }
 }
 
 - (NSUInteger)supportedInterfaceOrientations

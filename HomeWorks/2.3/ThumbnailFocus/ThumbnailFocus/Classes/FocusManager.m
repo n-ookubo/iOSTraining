@@ -33,6 +33,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (void)installOnView:(UIView *)view
 {
+    NSLog(@"installOnView:");
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(handleFocusGesture:)];
     [view addGestureRecognizer:tapGesture];
@@ -41,6 +42,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (FocusViewController *)focusViewControllerForView:(UIView *)mediaView
 {
+    NSLog(@"focusViewControllerForView:");
     UIImage *image = ((UIImageView *)mediaView).image;
     if(image == nil) return nil;
 
@@ -60,6 +62,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (void)handleFocusGesture:(UIGestureRecognizer *)gesture
 {
+    NSLog(@"handleFocusGesture:");
     FocusViewController *focusViewController = [self focusViewControllerForView:gesture.view];
     if(focusViewController == nil) return;
     
@@ -81,6 +84,7 @@ static CGFloat const kAnimationDuration = 0.5;
     [UIView animateWithDuration:kAnimationDuration
                      animations:^{
                          focusViewController.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];
+                         imageView.frame = parentViewController.view.bounds;
                      }
                      completion:^(BOOL finished) {
                              [self installZoomView];
@@ -90,6 +94,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (void)installZoomView
 {
+    NSLog(@"installZoomView");
     ImageScrollView *scrollView = [[ImageScrollView alloc] initWithFrame:self.focusViewController.contentView.bounds];
     scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.focusViewController.scrollView = scrollView;
@@ -100,6 +105,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (void)uninstallZoomView
 {
+    NSLog(@"uninstallZoomView");
     UIView *contentView = self.focusViewController.contentView;
     CGRect frame = [contentView convertRect:self.focusViewController.scrollView.zoomImageView.frame
                                    fromView:self.focusViewController.scrollView];
@@ -110,6 +116,7 @@ static CGFloat const kAnimationDuration = 0.5;
 
 - (void)handleDefocusGesture:(UIGestureRecognizer *)gesture
 {
+    NSLog(@"handleDefocusGesture:");
     if(self.isZooming && self.gestureDisabledDuringZooming) return;
 
     [self uninstallZoomView];

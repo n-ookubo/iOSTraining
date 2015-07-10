@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69E03D2D1B4F68E900BB6532 /* ThumbnailsViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69E03D2C1B4F68E900BB6532 /* ThumbnailsViewController~ipad.xib */; };
 		DA28B781171FA45700B1D982 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA28B780171FA45700B1D982 /* UIKit.framework */; };
 		DA28B783171FA45700B1D982 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA28B782171FA45700B1D982 /* Foundation.framework */; };
 		DA28B785171FA45700B1D982 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA28B784171FA45700B1D982 /* CoreGraphics.framework */; };
@@ -20,7 +21,7 @@
 		DA28B7B1171FA4FB00B1D982 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA28B7AF171FA4FB00B1D982 /* MainViewController.xib */; };
 		DA28B7B3171FAD3A00B1D982 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA28B7B2171FAD3A00B1D982 /* QuartzCore.framework */; };
 		DA28B7B7171FAD6200B1D982 /* ThumbnailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA28B7B5171FAD6200B1D982 /* ThumbnailsViewController.m */; };
-		DA28B7B8171FAD6200B1D982 /* ThumbnailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController.xib */; };
+		DA28B7B8171FAD6200B1D982 /* ThumbnailsViewController~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController~iphone.xib */; };
 		DA28B7C0171FB17D00B1D982 /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA28B7BE171FB17D00B1D982 /* FocusViewController.m */; };
 		DA28B7C1171FB17D00B1D982 /* FocusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA28B7BF171FB17D00B1D982 /* FocusViewController.xib */; };
 		DA28B7CD171FCA4000B1D982 /* 1f.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA28B7C4171FCA4000B1D982 /* 1f.jpg */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69E03D2C1B4F68E900BB6532 /* ThumbnailsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ThumbnailsViewController~ipad.xib"; sourceTree = "<group>"; };
 		DA28B77D171FA45700B1D982 /* ThumbnailFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThumbnailFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA28B780171FA45700B1D982 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA28B782171FA45700B1D982 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,7 +57,7 @@
 		DA28B7B2171FAD3A00B1D982 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DA28B7B4171FAD6200B1D982 /* ThumbnailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailsViewController.h; sourceTree = "<group>"; };
 		DA28B7B5171FAD6200B1D982 /* ThumbnailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailsViewController.m; sourceTree = "<group>"; };
-		DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThumbnailsViewController.xib; sourceTree = "<group>"; };
+		DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ThumbnailsViewController~iphone.xib"; sourceTree = "<group>"; };
 		DA28B7BD171FB17D00B1D982 /* FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusViewController.h; sourceTree = "<group>"; };
 		DA28B7BE171FB17D00B1D982 /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusViewController.m; sourceTree = "<group>"; };
 		DA28B7BF171FB17D00B1D982 /* FocusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FocusViewController.xib; sourceTree = "<group>"; };
@@ -150,7 +152,8 @@
 				DA28B7AF171FA4FB00B1D982 /* MainViewController.xib */,
 				DA28B7B4171FAD6200B1D982 /* ThumbnailsViewController.h */,
 				DA28B7B5171FAD6200B1D982 /* ThumbnailsViewController.m */,
-				DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController.xib */,
+				DA28B7B6171FAD6200B1D982 /* ThumbnailsViewController~iphone.xib */,
+				69E03D2C1B4F68E900BB6532 /* ThumbnailsViewController~ipad.xib */,
 				DA28B7BD171FB17D00B1D982 /* FocusViewController.h */,
 				DA28B7BE171FB17D00B1D982 /* FocusViewController.m */,
 				DA28B7BF171FB17D00B1D982 /* FocusViewController.xib */,
@@ -249,13 +252,14 @@
 				DA28B795171FA45700B1D982 /* Default@2x.png in Resources */,
 				DA28B797171FA45700B1D982 /* Default-568h@2x.png in Resources */,
 				DA28B7B1171FA4FB00B1D982 /* MainViewController.xib in Resources */,
-				DA28B7B8171FAD6200B1D982 /* ThumbnailsViewController.xib in Resources */,
+				DA28B7B8171FAD6200B1D982 /* ThumbnailsViewController~iphone.xib in Resources */,
 				DA28B7C1171FB17D00B1D982 /* FocusViewController.xib in Resources */,
 				DA28B7CD171FCA4000B1D982 /* 1f.jpg in Resources */,
 				DA28B7CE171FCA4000B1D982 /* 2f.jpg in Resources */,
 				DA28B7CF171FCA4000B1D982 /* 3f.jpg in Resources */,
 				DA28B7D0171FCA4000B1D982 /* 4f.jpg in Resources */,
 				DA28B7D1171FCA4000B1D982 /* 1.jpg in Resources */,
+				69E03D2D1B4F68E900BB6532 /* ThumbnailsViewController~ipad.xib in Resources */,
 				DA28B7D2171FCA4000B1D982 /* 2.jpg in Resources */,
 				DA28B7D3171FCA4000B1D982 /* 3.jpg in Resources */,
 				DA28B7D4171FCA4000B1D982 /* 4.jpg in Resources */,
@@ -359,7 +363,7 @@
 				INFOPLIST_FILE = "ThumbnailFocus/ThumbnailFocus-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -372,7 +376,7 @@
 				INFOPLIST_FILE = "ThumbnailFocus/ThumbnailFocus-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
