@@ -20,10 +20,15 @@
     // Override point for customization after application launch.
     UIViewController *viewController1 = [[MFTFirstViewController alloc] initWithNibName:@"MFTFirstViewController" bundle:nil];
     UIViewController *viewController2 = [[MFTSecondViewController alloc] initWithNibName:@"MFTSecondViewController" bundle:nil];
+    UIViewController *viewController3 = [[UIViewController alloc] init];
+    viewController3.title = @"modal";
+    viewController3.tabBarItem.image = [UIImage imageNamed:@"first"];
+    
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[viewController1, viewController2];
+    self.tabBarController.viewControllers = @[viewController1, viewController2, viewController3];
 
     // TODO : tabBarController の delegateを自分にセット
+    self.tabBarController.delegate = self;
 
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -72,15 +77,24 @@
 */
 
 
-/*
+
 // TODO
 // コメントアウトをはずすと、タブがタップされた時にこのメソッドが呼ばれます
 // YESを返すとタブが選択され、NOを返すと選択されません
 // モーダルを出したい時はモーダルを表示してNOを返してください
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
-
+    if ([viewController isKindOfClass:[MFTFirstViewController class]]
+        || [viewController isKindOfClass:[MFTSecondViewController class]]) {
+        return YES;
+    }
+    [self.window.rootViewController presentViewController:[[MFTModalViewController alloc] initWithNibName:@"MFTModalViewController" bundle:nil] animated:YES completion:nil];
+    return NO;
 }
-*/
+
+- (void)modalViewControllerCloseButtonTapped:(MFTModalViewController *)viewController
+{
+    [viewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

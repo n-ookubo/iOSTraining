@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MFTModalViewController.h"
 
-@interface MFTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface MFTAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, MTFModalViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
