@@ -31,11 +31,13 @@
     // TODO : UILabel の高さ計算 [2]
     // HINT : (CGSize)sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode
 
-    CGSize size;
+    CGSize boundingRect = CGSizeMake(self.bodyLabel.bounds.size.width, CGFLOAT_MAX);
+    NSDictionary *attributes = @{NSFontAttributeName: self.bodyLabel.font};
+    CGRect rect = [text boundingRectWithSize:boundingRect options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
 
     CGFloat top = 20.0f;
     CGFloat bottom = 20.0f;
-    return size.height + top + bottom;
+    return rect.size.height + top + bottom;
 }
 
 @end
