@@ -10,6 +10,7 @@
 #import "MixiAssetsGroupViewController.h"
 
 @interface MixiViewController ()
+@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (weak, nonatomic) IBOutlet UITableView *selectedPhotoTableView;
 @property (strong, nonatomic) NSArray *selectedAssets;
 
@@ -23,6 +24,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _selectedAssets = [NSArray array];
+    _assetsLibrary = [[ALAssetsLibrary alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,6 +37,7 @@
 {
     MixiAssetsGroupViewController *assetsGroupVC = [[MixiAssetsGroupViewController alloc] initWithNibName:@"MixiAssetsGroupViewController" bundle:nil];
     assetsGroupVC.delegate = self;
+    assetsGroupVC.assetsLibrary = _assetsLibrary;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:assetsGroupVC];
     [self presentViewController:nc animated:YES completion:nil];
 }

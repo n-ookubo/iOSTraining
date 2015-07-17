@@ -12,7 +12,6 @@
 
 @interface MixiAssetsGroupViewController ()
 
-@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, strong) NSMutableArray *assetsGroups;
 @property (weak, nonatomic) IBOutlet UITableView *assetTableView;
 
@@ -38,7 +37,6 @@
     self.navigationItem.rightBarButtonItem = rightBarButton;
 
     _assetsGroups = [NSMutableArray array];
-    _assetsLibrary = [[ALAssetsLibrary alloc] init];
     [_assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll
                             usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
                                 NSLog(@"AssetsGroup : %@", group);

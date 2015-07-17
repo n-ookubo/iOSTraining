@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface MixiAssetsGroupViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, weak) ALAssetsLibrary *assetsLibrary;
 @property (nonatomic, weak)id delegate;
 @end
